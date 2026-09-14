@@ -95,5 +95,5 @@ const styles = StyleSheet.create({
   pressedCard: { opacity: 0.7 },
   opponentImage: { width: 72, height: 72 },
   cardContent: { gap: 8 },
-  difficultyLabel: { ...theme.typography.button, color: theme.colors.text },
+  difficultyLabel: { ...theme.typography.bodyLarge, color: theme.colors.text },
 });

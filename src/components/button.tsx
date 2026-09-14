@@ -6,7 +6,7 @@ type ButtonProps = {
   label: string;
   icon: SymbolViewProps["name"];
   variant: "filled" | "outlined" | "text";
-  onPress?: PressableProps["onPress"];
+  onPress: NonNullable<PressableProps["onPress"]>;
 };
 
 export function Button({ label, icon, variant, onPress }: ButtonProps) {
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   label: {
     flexShrink: 1,
-    ...theme.typography.button,
+    ...theme.typography.bodyLarge,
     color: theme.colors.primary,
     textAlign: "center",
   },

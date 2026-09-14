@@ -15,6 +15,7 @@ import {
   useRouter,
 } from "expo-router";
 import { usePreventRemove } from "expo-router/react-navigation";
+import * as Haptics from "expo-haptics";
 import { useCallback, useEffect, useState } from "react";
 import {
   AccessibilityInfo,
@@ -48,6 +49,16 @@ export default function SinglePlayerGameScreen() {
   useEffect(() => {
     AccessibilityInfo.announceForAccessibility(announcement);
   }, [announcement]);
+
+  useEffect(() => {
+    if (winner !== null) {
+      Haptics.notificationAsync(
+        winner === "red"
+          ? Haptics.NotificationFeedbackType.Success
+          : Haptics.NotificationFeedbackType.Warning,
+      );
+    }
+  }, [winner]);
 
   const isComputerTurn = game.status !== "finished" && game.turn === "blue";
 
@@ -91,12 +102,7 @@ export default function SinglePlayerGameScreen() {
   }
 
   function handleSquarePress(square: ChessSquare) {
-    setGame((currentGame) => {
-      if (currentGame.status !== "finished" && currentGame.turn === "blue") {
-        return currentGame;
-      }
-      return selectSquare(currentGame, square);
-    });
+    setGame((currentGame) => selectSquare(currentGame, square));
   }
 
   return (
@@ -140,7 +146,11 @@ export default function SinglePlayerGameScreen() {
           </View>
         </View>
         <View>
-          <Chessboard game={game} onSquarePress={handleSquarePress} />
+          <Chessboard
+            game={game}
+            onSquarePress={handleSquarePress}
+            disabled={isComputerTurn}
+          />
           {winner !== null && (
             <VictoryOverlay
               winner={winner}

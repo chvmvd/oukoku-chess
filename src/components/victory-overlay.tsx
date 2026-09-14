@@ -3,6 +3,7 @@ import { theme } from "@/constants/theme";
 import type { ChessColor } from "@/game/chess";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
+import Animated, { FadeIn } from "react-native-reanimated";
 
 type VictoryOverlayProps = {
   winner: ChessColor;
@@ -11,7 +12,10 @@ type VictoryOverlayProps = {
 
 export function VictoryOverlay({ winner, message }: VictoryOverlayProps) {
   return (
-    <View style={styles.overlay}>
+    <Animated.View
+      entering={FadeIn.delay(200).duration(240)}
+      style={styles.overlay}
+    >
       <View style={styles.banner}>
         <Image
           source={pieceImages[winner].king}
@@ -31,7 +35,7 @@ export function VictoryOverlay({ winner, message }: VictoryOverlayProps) {
           {message}
         </Text>
       </View>
-    </View>
+    </Animated.View>
   );
 }
 

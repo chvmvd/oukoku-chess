@@ -5,7 +5,7 @@ import { theme } from "@/constants/theme";
 type IconButtonProps = {
   label: string;
   icon: SymbolViewProps["name"];
-  onPress: PressableProps["onPress"];
+  onPress: NonNullable<PressableProps["onPress"]>;
 };
 
 export function IconButton({ label, icon, onPress }: IconButtonProps) {

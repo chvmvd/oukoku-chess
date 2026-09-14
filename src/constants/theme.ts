@@ -33,6 +33,6 @@ export const theme = {
     headline: { fontFamily: fontFamilies.medium, fontSize: 32 },
     title: { fontFamily: fontFamilies.bold, fontSize: 20 },
     body: { fontFamily: fontFamilies.medium, fontSize: 20 },
-    button: { fontFamily: fontFamilies.medium, fontSize: 24 },
+    bodyLarge: { fontFamily: fontFamilies.medium, fontSize: 24 },
   },
 } as const;

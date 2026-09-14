@@ -10,7 +10,9 @@ type ChessPieceViewProps = {
 
 export function ChessPieceView({ chessPiece }: ChessPieceViewProps) {
   return (
-    <View style={[styles.piece, chessPiece.color === "blue" && styles.bluePiece]}>
+    <View
+      style={[styles.piece, chessPiece.color === "blue" && styles.bluePiece]}
+    >
       <Image
         source={pieceImages[chessPiece.color][chessPiece.type]}
         style={styles.pieceImage}

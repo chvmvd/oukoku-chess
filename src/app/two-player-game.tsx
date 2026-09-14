@@ -12,6 +12,7 @@ import {
 } from "@/game/chess";
 import { useNavigation, useRouter } from "expo-router";
 import { usePreventRemove } from "expo-router/react-navigation";
+import * as Haptics from "expo-haptics";
 import { useEffect, useState } from "react";
 import {
   AccessibilityInfo,
@@ -38,6 +39,12 @@ export default function TwoPlayerGameScreen() {
   useEffect(() => {
     AccessibilityInfo.announceForAccessibility(announcement);
   }, [announcement]);
+
+  useEffect(() => {
+    if (winner !== null) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    }
+  }, [winner]);
 
   usePreventRemove(shouldConfirmBeforeDiscardingGame, ({ data }) => {
     Alert.alert("もどる？", "いまの ゲームは おわりになるよ。", [
