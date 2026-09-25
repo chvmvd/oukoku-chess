@@ -10,7 +10,11 @@
     "userInterfaceStyle": "light",
     "backgroundColor": "#FFFCF5",
     "ios": {
-      "bundleIdentifier": "com.chvmvd.oukokuchess"
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chvmvd.oukokuchess",
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -19,6 +23,9 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "package": "com.chvmvd.oukokuchess"
+    },
+    "locales": {
+      "ja": "./languages/japanese.json"
     },
     "plugins": [
       "expo-router",
